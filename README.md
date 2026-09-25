@@ -50,7 +50,7 @@ Then open <http://localhost:8000/>.
 4. Your site will be live at:
 
    ```
-   https://<your-username>.github.io/<your-repo-name>/CNN/image_classify/
+   https://<your-username>.github.io/<your-repo-name>/
    ```
 
 ## How it works
