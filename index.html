@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scene Classifier — CNN vs Classical SVM</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🏞️ Intel Scene Classifier</h1>
+    <p class="subtitle">
+      Upload a photo and see how a CNN and a classical SVM classify it —
+      right in your browser, no server needed.
+    </p>
+  </header>
+
+  <main>
+    <section class="panel upload-panel">
+      <h2>1. Choose an image</h2>
+      <label class="dropzone" id="dropzone" for="fileInput">
+        <span id="dropzoneText">Click to choose a file, or drag &amp; drop an image here</span>
+        <img id="preview" alt="Preview of the selected image" hidden />
+      </label>
+      <input type="file" id="fileInput" accept="image/*" hidden />
+    </section>
+
+    <section class="panel model-panel">
+      <h2>2. Choose a model</h2>
+      <div class="model-choice">
+        <label class="model-card">
+          <input type="radio" name="model" value="cnn" checked />
+          <div>
+            <strong>CNN</strong>
+            <span>Deep learning model, run via ONNX Runtime Web</span>
+          </div>
+        </label>
+        <label class="model-card">
+          <input type="radio" name="model" value="svm" />
+          <div>
+            <strong>Classical (SVM)</strong>
+            <span>Hand-crafted Color + Edge + HOG features → SVM</span>
+          </div>
+        </label>
+      </div>
+
+      <button id="classifyBtn" disabled>Classify image</button>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel result-panel" id="resultPanel">
+      <h2>3. Result</h2>
+      <div class="result-main">
+        <span class="result-label" id="resultLabel">No image classified yet</span>
+        <span class="result-confidence" id="resultConfidence"></span>
+      </div>
+      <ul class="result-bars" id="resultBars"></ul>
+      <p class="timing" id="timing"></p>
+    </section>
+
+    <section class="panel about-panel">
+      <h2>About this demo</h2>
+      <ul>
+        <li><strong>CNN</strong> — same trained model, run in-browser via ONNX.</li>
+        <li><strong>SVM</strong> — same trained classifier; its classical features are re-implemented in JavaScript, so results are a close approximation.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Runs 100% client-side — your images never leave your device.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

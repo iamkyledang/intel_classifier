@@ -1,0 +1,256 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-border: #334155;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #4C72B0;
+  --accent-2: #DD8452;
+  --good: #55A868;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.site-header {
+  padding: 2rem 1.5rem 1rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  border: 2px dashed var(--panel-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+  border-color: var(--accent);
+  background: rgba(76, 114, 176, 0.08);
+}
+
+.dropzone img {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.model-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.model-card {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.model-card:has(input:checked) {
+  border-color: var(--accent);
+  background: rgba(76, 114, 176, 0.12);
+}
+
+.model-card input {
+  margin-top: 0.2rem;
+}
+
+.model-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.model-card span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+button#classifyBtn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+button#classifyBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button#classifyBtn:not(:disabled):hover {
+  background: #3d5c8f;
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: #f87171;
+}
+
+.result-main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.result-label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.result-confidence {
+  color: var(--muted);
+}
+
+.result-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.result-bars li {
+  display: grid;
+  grid-template-columns: 90px 1fr 48px;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.result-bars .bar-track {
+  background: #0b1220;
+  border-radius: 6px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.result-bars .bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.25s ease;
+}
+
+.result-bars li.top .bar-fill {
+  background: var(--good);
+}
+
+.result-bars span:first-child {
+  text-transform: capitalize;
+  color: var(--muted);
+}
+
+.timing {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.about-panel ul {
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.about-panel li + li {
+  margin-top: 0.6rem;
+}
+
+.about-panel a {
+  color: var(--accent-2);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 480px) {
+  .model-choice {
+    grid-template-columns: 1fr;
+  }
+
+  .result-bars li {
+    grid-template-columns: 70px 1fr 40px;
+  }
+}
